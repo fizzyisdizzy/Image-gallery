@@ -4,13 +4,13 @@ package example.android.fizzy.imagegallery.model;
  * Created by Fizzy on 06/06/2017.
  */
 
-public class Image {
+public class Photo {
 
     private String title;
-    private String image;
+    private int image;
     private String details;
 
-    public Image(String title, String image, String details) {
+    public Photo() {
         setTitle(title);
         setImage(image);
         setDetails(details);
@@ -32,11 +32,11 @@ public class Image {
         this.details = details;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
