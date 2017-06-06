@@ -1,7 +1,9 @@
-package example.android.fizzy.imagegallery;
+package example.android.fizzy.imagegallery.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import example.android.fizzy.imagegallery.R;
 
 public class MainActivity extends AppCompatActivity {
 
