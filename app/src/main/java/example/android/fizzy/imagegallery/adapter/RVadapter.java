@@ -38,6 +38,44 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
         photo.setTitle("test");
         photoList.add(photo);
 
+        photo = new Photo();
+        photo.setDetails("test");
+        photo.setImage(R.drawable.london);
+        photo.setTitle("test");
+        photoList.add(photo);
+
+        photo = new Photo();
+        photo.setDetails("test");
+        photo.setImage(R.drawable.io);
+        photo.setTitle("test");
+        photoList.add(photo);
+
+        photo = new Photo();
+        photo.setDetails("test");
+        photo.setImage(R.drawable.io);
+        photo.setTitle("test");
+        photoList.add(photo);
+
+
+        photo = new Photo();
+        photo.setDetails("test");
+        photo.setImage(R.drawable.london);
+        photo.setTitle("test");
+        photoList.add(photo);
+
+
+        photo = new Photo();
+        photo.setDetails("test");
+        photo.setImage(R.drawable.london);
+        photo.setTitle("test");
+        photoList.add(photo);
+
+        photo = new Photo();
+        photo.setDetails("test");
+        photo.setImage(R.drawable.io);
+        photo.setTitle("test");
+        photoList.add(photo);
+
 
     }
 
