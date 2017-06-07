@@ -1,20 +1,33 @@
 package example.android.fizzy.imagegallery.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
+
+
 /**
  * Created by Fizzy on 06/06/2017.
  */
 
 public class Photo {
-
+    @SerializedName("title")
+    @Expose
     private String title;
-    private int image;
-    private String details;
-
-    public Photo() {
-        setTitle(title);
-        setImage(image);
-        setDetails(details);
-    }
+    @SerializedName("link")
+    @Expose
+    private String link;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("modified")
+    @Expose
+    private String modified;
+    @SerializedName("generator")
+    @Expose
+    private String generator;
+    @SerializedName("items")
+    @Expose
+    private List<Item> items = null;
 
     public String getTitle() {
         return title;
@@ -24,20 +37,43 @@ public class Photo {
         this.title = title;
     }
 
-    public String getDetails() {
-        return details;
+    public String getLink() {
+        return link;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public int getImage() {
-        return image;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
+    public String getModified() {
+        return modified;
+    }
+
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
+    public String getGenerator() {
+        return generator;
+    }
+
+    public void setGenerator(String generator) {
+        this.generator = generator;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 }

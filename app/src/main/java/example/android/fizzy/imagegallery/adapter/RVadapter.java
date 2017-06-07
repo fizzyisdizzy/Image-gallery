@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
-
 import example.android.fizzy.imagegallery.R;
+import example.android.fizzy.imagegallery.model.Item;
 import example.android.fizzy.imagegallery.model.Photo;
 
 /**
@@ -21,60 +21,12 @@ import example.android.fizzy.imagegallery.model.Photo;
 public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
 
     List<Photo> photoList;
+    List<Item> mItems;
+    Context mContext;
 
-    public RVadapter() {
-        super();
-        photoList = new ArrayList<Photo>();
-        Photo photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.london);
-        photo.setTitle("test");
-        photoList.add(photo);
-
-
-        photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.io);
-        photo.setTitle("test");
-        photoList.add(photo);
-
-        photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.london);
-        photo.setTitle("test");
-        photoList.add(photo);
-
-        photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.io);
-        photo.setTitle("test");
-        photoList.add(photo);
-
-        photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.io);
-        photo.setTitle("test");
-        photoList.add(photo);
-
-
-        photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.london);
-        photo.setTitle("test");
-        photoList.add(photo);
-
-
-        photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.london);
-        photo.setTitle("test");
-        photoList.add(photo);
-
-        photo = new Photo();
-        photo.setDetails("test");
-        photo.setImage(R.drawable.io);
-        photo.setTitle("test");
-        photoList.add(photo);
+    public RVadapter(ArrayList<Item> mItems, Context context ) {
+        this.mItems = mItems;
+        this.mContext = context;
 
 
     }
@@ -88,16 +40,20 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Photo photo = photoList.get(i);
-        viewHolder.photoTitle.setText(photo.getTitle());
-        viewHolder.photoImage.setImageResource(photo.getImage());
+        //Photo photo = photoList.get(i);
+        viewHolder.photoTitle.setText(mItems.get(i).getTitle());
+        Picasso.with(viewHolder.context).load(String.valueOf(mItems.get(i).getMedia())).into(viewHolder.photoImage);
     }
 
     @Override
     public int getItemCount() {
-        return photoList.size();
+        return mItems.size();
     }
 
+    public void updatePhotos(List<Item> photos) {
+        mItems = photos;
+        notifyDataSetChanged();
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
