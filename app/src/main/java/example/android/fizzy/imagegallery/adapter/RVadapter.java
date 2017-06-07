@@ -40,9 +40,10 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        //Photo photo = photoList.get(i);
-        viewHolder.photoTitle.setText(mItems.get(i).getTitle());
-        Picasso.with(viewHolder.context).load(String.valueOf(mItems.get(i).getMedia())).into(viewHolder.photoImage);
+        ///Photo photo = photoList.get(i);
+        //viewHolder.photoTitle.setText(mItems.get(i).getTitle());
+        String url = String.valueOf(mItems.get(i).getMedia().getM());
+        Picasso.with(viewHolder.context).load(url).into(viewHolder.photoImage);
     }
 
     @Override
@@ -64,7 +65,7 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
         public ViewHolder(final View itemView) {
             super(itemView);
             photoImage = (ImageView) itemView.findViewById(R.id.image);
-            photoTitle = (TextView) itemView.findViewById(R.id.title);
+            //photoTitle = (TextView) itemView.findViewById(R.id.title);
             context = itemView.getContext();
         }
 
