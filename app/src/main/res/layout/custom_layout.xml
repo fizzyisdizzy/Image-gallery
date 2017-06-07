@@ -2,16 +2,20 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:id="@+id/main"
+    android:transitionName="layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image"
+            android:transitionName="image"
             android:src="@drawable/london"
             android:adjustViewBounds="true"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:layout_margin="1dp"
-            android:layout_width="match_parent"/>
+            android:layout_width="match_parent"
+            android:clickable="true"/>
 
 </LinearLayout>

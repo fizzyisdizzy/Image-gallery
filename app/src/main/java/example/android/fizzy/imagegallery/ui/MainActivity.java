@@ -1,9 +1,18 @@
 package example.android.fizzy.imagegallery.ui;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import java.util.ArrayList;
 import example.android.fizzy.imagegallery.R;
 import example.android.fizzy.imagegallery.adapter.RVadapter;
@@ -19,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     StaggeredGridLayoutManager sglm;
-    private FlickerApi mFlickerService;
-    private RVadapter rVadapter;
+    FlickerApi mFlickerService;
+    RVadapter rVadapter;
 
     ArrayList<Item> mItems = new ArrayList<>();
 
@@ -39,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         rVadapter = new RVadapter(mItems, getApplicationContext());
         recyclerView.setAdapter(rVadapter);
+
         loadImages();
+
+        rVadapter.setOnItemClickListener(onItemClickListener);
 
     }
 
@@ -53,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()) {
                     Log.d("result", response.body().toString());
-                    rVadapter.updatePhotos(response.body().getItems());
+                    rVadapter.updatePhotos((ArrayList<Item>) response.body().getItems());
                     Log.d("MainActivity", "posts loaded from API");
                 } else {
                     int statusCode  = response.code();
@@ -68,4 +80,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    RVadapter.OnItemClickListener onItemClickListener = new RVadapter.OnItemClickListener() {
+
+        @Override
+        public void onItemClick(View view, int position) {
+
+            ImageView placeImage = (ImageView) view.findViewById(R.id.image);
+
+//            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+//                    MainActivity.this, placeImage, "image");
+
+            Intent intent = new Intent(getApplicationContext(), FullscreenImageActivity.class);
+            intent.putExtra("image", mItems.get(position).getMedia().getM());
+            startActivity(intent);
+
+            //ImageView placeImage = (ImageView) view.findViewById(R.id.image);
+
+        }
+    };
 }
