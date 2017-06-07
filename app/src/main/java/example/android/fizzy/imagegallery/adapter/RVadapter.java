@@ -55,6 +55,10 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
         return mItems.size();
     }
 
+    public ArrayList getItems() {
+        return mItems;
+    }
+
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);

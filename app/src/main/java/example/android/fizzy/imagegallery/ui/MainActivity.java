@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     StaggeredGridLayoutManager sglm;
     FlickerApi mFlickerService;
     RVadapter rVadapter;
-
     ArrayList<Item> mItems = new ArrayList<>();
 
     @Override
@@ -89,12 +88,14 @@ public class MainActivity extends AppCompatActivity {
 
             ImageView placeImage = (ImageView) view.findViewById(R.id.image);
 
-//            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
-//                    MainActivity.this, placeImage, "image");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+                    MainActivity.this, placeImage, "image");
 
             Intent intent = new Intent(getApplicationContext(), FullscreenImageActivity.class);
+            ArrayList<Item> mItems = rVadapter.getItems();
+
             intent.putExtra("image", mItems.get(position).getMedia().getM());
-            startActivity(intent);
+            startActivity(intent, options.toBundle());
 
             //ImageView placeImage = (ImageView) view.findViewById(R.id.image);
 
