@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Fizzy on 07/06/2017.
+ * Media Object part of Photo Object
  */
 
 

@@ -5,34 +5,26 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
-import java.util.List;
 import example.android.fizzy.imagegallery.R;
-import example.android.fizzy.imagegallery.model.Item;
 import example.android.fizzy.imagegallery.model.Photo;
 
 /**
  * Created by Fizzy on 06/06/2017.
+ * Activity to set up content to be displayed for Adapter
  */
 
-public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
-    Context mContext;
-    List<Photo> photoList;
-    ArrayList<Item> mItems;
-    static OnItemClickListener mItemClickListener;
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
+    private Context mContext;
+    private ArrayList<Photo> mItems;
+    private static OnItemClickListener mItemClickListener;
 
-    public RVadapter(ArrayList<Item> mItems, Context context ) {
+    public RVAdapter(ArrayList<Photo> mItems, Context context) {
         this.mItems = mItems;
         this.mContext = context;
-
-
     }
 
     @Override
@@ -44,8 +36,7 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        ///Photo photo = photoList.get(i);
-        //viewHolder.photoTitle.setText(mItems.get(i).getTitle());
+
         String url = String.valueOf(mItems.get(i).getMedia().getM());
         Picasso.with(viewHolder.context).load(url).into(viewHolder.photoImage);
     }
@@ -64,7 +55,7 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public void updatePhotos(ArrayList<Item> photos) {
+    public void updatePhotos(ArrayList<Photo> photos) {
         mItems = photos;
         notifyDataSetChanged();
     }
@@ -73,7 +64,6 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
 
         public View mView;
         public ImageView photoImage;
-        public TextView photoTitle;
         public Context context;
         public LinearLayout placeholder;
 
@@ -81,7 +71,6 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
             super(itemView);
             mView = itemView;
             photoImage = (ImageView) itemView.findViewById(R.id.image);
-            //photoTitle = (TextView) itemView.findViewById(R.id.title);
             context = itemView.getContext();
             placeholder = (LinearLayout) itemView.findViewById(R.id.main);
             photoImage.setOnClickListener(this);
@@ -91,18 +80,16 @@ public class RVadapter extends RecyclerView.Adapter<RVadapter.ViewHolder> {
             if (mItemClickListener != null) {
                 mItemClickListener.onItemClick(itemView, getLayoutPosition());
                 System.out.print("test");
-
             }
         }
 
     }
-
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
 
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
-        RVadapter.mItemClickListener = mItemClickListener;
+        RVAdapter.mItemClickListener = mItemClickListener;
     }
 }

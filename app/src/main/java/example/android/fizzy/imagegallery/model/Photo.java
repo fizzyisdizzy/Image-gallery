@@ -2,11 +2,10 @@ package example.android.fizzy.imagegallery.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import java.util.List;
-
 
 /**
- * Created by Fizzy on 06/06/2017.
+ * Created by Fizzy on 07/06/2017.
+ * Data object for Photo
  */
 
 public class Photo {
@@ -16,18 +15,27 @@ public class Photo {
     @SerializedName("link")
     @Expose
     private String link;
+    @SerializedName("media")
+    @Expose
+    private Media media;
+    @SerializedName("date_taken")
+    @Expose
+    private String dateTaken;
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("modified")
+    @SerializedName("published")
     @Expose
-    private String modified;
-    @SerializedName("generator")
+    private String published;
+    @SerializedName("author")
     @Expose
-    private String generator;
-    @SerializedName("items")
+    private String author;
+    @SerializedName("author_id")
     @Expose
-    private List<Item> items = null;
+    private String authorId;
+    @SerializedName("tags")
+    @Expose
+    private String tags;
 
     public String getTitle() {
         return title;
@@ -45,6 +53,22 @@ public class Photo {
         this.link = link;
     }
 
+    public Media getMedia() {
+        return media;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
+    }
+
+    public String getDateTaken() {
+        return dateTaken;
+    }
+
+    public void setDateTaken(String dateTaken) {
+        this.dateTaken = dateTaken;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -53,27 +77,35 @@ public class Photo {
         this.description = description;
     }
 
-    public String getModified() {
-        return modified;
+    public String getPublished() {
+        return published;
     }
 
-    public void setModified(String modified) {
-        this.modified = modified;
+    public void setPublished(String published) {
+        this.published = published;
     }
 
-    public String getGenerator() {
-        return generator;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setGenerator(String generator) {
-        this.generator = generator;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public String getAuthorId() {
+        return authorId;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }
